@@ -1,0 +1,6 @@
+#container {
+  background: #222 url("/assets/shed.jpg");
+  background-size: cover;
+  height:auto;
+  width:auto;
+}

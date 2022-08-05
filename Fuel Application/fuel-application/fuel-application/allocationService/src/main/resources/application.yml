@@ -1,0 +1,9 @@
+
+
+spring:  cloud:    stream:      bindings:       input:
+          destination: fueltopic
+          group: emailconsumers
+      kafka:
+        binder:
+          brokers: 127.0.0.1
+          defaultBrokerPort: 9092        

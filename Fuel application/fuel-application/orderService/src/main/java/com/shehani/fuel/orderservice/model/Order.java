@@ -13,7 +13,15 @@ public class Order implements Serializable {
 	private String fuelStationName;
 	private String fuelType;
 	private int capacity;
+	private String status;
 	
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public Order(String orderId, String fuelStationId, String fuelStationName, String fuelType, int capacity) {
 		
 		this.orderId = orderId;

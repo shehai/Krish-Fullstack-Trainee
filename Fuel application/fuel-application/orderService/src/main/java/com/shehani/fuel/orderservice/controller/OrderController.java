@@ -1,8 +1,7 @@
 package com.shehani.fuel.orderservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.messaging.Processor;
+
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,11 +30,11 @@ public class OrderController {
 	
 	@PostMapping("/")
 	//@SendTo(Processor.OUTPUT)
-	public void saveEmp(@RequestBody Order order) {
+	public Order saveEmp(@RequestBody Order order) {
 		
 		//LOGGER.info("::successfully Employee added ::::EmpDetails-saveEmp :: ");
 		
-		 orderService.submitOrder(order);
+		 return orderService.submitOrder(order);
 		 
 		 //Order newOrder = new Order(order.getOrderId(),order.getFuelStationId(),order.getFuelStationName(),order.getFuelType(),order.getCapacity());
 		

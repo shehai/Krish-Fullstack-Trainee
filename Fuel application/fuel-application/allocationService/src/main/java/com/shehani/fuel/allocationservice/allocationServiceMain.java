@@ -12,7 +12,7 @@ import com.shehani.fuel.allocationservice.model.Order;
 
 
 @SpringBootApplication
-@EnableBinding(Processor.class)
+//@EnableBinding(Processor.class)
 public class allocationServiceMain {
 
 	public static void main(String[] args) {
@@ -23,8 +23,8 @@ public class allocationServiceMain {
 		//System.out.println("Allocation Service Started");
 	}
 	
-	@StreamListener(Processor.INPUT)
-    public void receivedEmail(String message) {
+	//@StreamListener/*(Processor.INPUT)
+    /*public void receivedEmail(String message) {
 		
 		System.out.println(message);
 		
@@ -32,6 +32,6 @@ public class allocationServiceMain {
         ///System.out.println("Sending email and sms: ");
         
 		
-    }
+    }*/
 
 }

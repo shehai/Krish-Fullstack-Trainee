@@ -1,5 +1,7 @@
 package com.shehani.fuel.allocationservice.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,12 @@ public class StockService {
 		return stockRepo.save(stock);
 		
 		
+	}
+	
+	
+	public List<Stock>getAllStock() {
 		
+		
+		return stockRepo.findAll();
 	}
 }

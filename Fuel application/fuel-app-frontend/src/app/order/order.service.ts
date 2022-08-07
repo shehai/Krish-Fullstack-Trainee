@@ -14,9 +14,9 @@ export class OrderService {
       }
 
 
-      saveOrder(order:Order) : Observable <any>{
+      saveOrder(order:Order) : Observable <Order>{
 
-        return this.http.post(`${this.orderUrl}`,order);
+        return this.http.post<Order>(`${this.orderUrl}`,order);
          //console.log(order);
 
     }

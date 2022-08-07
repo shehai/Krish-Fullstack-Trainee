@@ -7,12 +7,14 @@ import { HomeComponent } from './home/home.component';
 import { OrderComponent } from './order/order.component';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CheckOrderStatusComponent } from './check-order-status/check-order-status.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    OrderComponent
+    OrderComponent,
+    CheckOrderStatusComponent
   ],
   imports: [
     BrowserModule,

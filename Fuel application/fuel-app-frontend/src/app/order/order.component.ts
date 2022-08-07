@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Order } from './order.model';
 import { OrderService } from './order.service';
 import {NgForm} from '@angular/forms';
+import { Stock } from './stock.model';
+import { StockService } from './stock.service';
 
 @Component({
   selector: 'app-order',
@@ -11,23 +13,41 @@ import {NgForm} from '@angular/forms';
 export class OrderComponent implements OnInit {
 
   order ={} as Order ;
+  newOrder={} as Order;
+  OrderId : String;
+  stock!:Stock[];
+  filteredStock!:Stock[];
+
   //order:Order={orderId:""}
   //order:Object ={};
-  constructor(private orderService:OrderService) { }
+  constructor(private orderService:OrderService, private stockService:StockService) { }
 
   ngOnInit(): void {
+
+     this.stockService.getAllStock().subscribe(
+       data => {
+        this.filteredStock = data;
+        this.stock = this.filteredStock
+        console.log(this.filteredStock);
+      }
+    )
   }
 
   submitOrder(){
 
     this.orderService.saveOrder(this.order).subscribe(data => {
-      console.log(data)
+
+      this.newOrder = data
+      this.OrderId= this.newOrder.orderId;
+      alert('Your Order ID is: '+ this.OrderId);
+      console.log(this.OrderId);
       //this.refreshPeople();
     })
     console.log(this.order);
 
 
   }
+
 
 
 }

@@ -27,11 +27,29 @@
 
         </div>
 
+
+        <!-- <div class="mb-3" >
+
+
+    <select class="form-select" name="mySelect"aria-label="Default select example" [(ngModel)]="newEmpLeave.leave.id">
+
+
+      <option   *ngFor="let item of (data$ | async)" [value]="item.id" >{{item.leaveType}}</option>
+
+
+    </select>
+
+    </div>-->
+
         <div class="mb-3">
-          <label for="fuelType" class="form-label">Fuel Type</label>
-          <input type="text" class="form-control" id="fuelType"
-          [(ngModel)]="order.fuelType" name="fuelType"
-          >
+          <label for="fuelId" class="form-label">Fuel Type</label>
+          <select class="form-select" name="mySelect"aria-label="Default select example" [(ngModel)]="order.fuelId">
+
+
+            <option   *ngFor="let stocks of filteredStock" [value]="stocks.fuelId" >{{stocks.fuelType}}</option>
+
+
+          </select>
 
         </div>
 

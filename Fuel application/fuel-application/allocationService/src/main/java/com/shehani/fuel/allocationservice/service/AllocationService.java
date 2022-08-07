@@ -3,6 +3,7 @@ package com.shehani.fuel.allocationservice.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -15,6 +16,12 @@ import com.shehani.fuel.allocationservice.repository.StockRepository;
 
 @Service
 public class AllocationService {
+	
+	@Autowired
+	KafkaTemplate<String,String> kafkaTemplate;
+	
+	@Value("${schedule.topic.name}")
+	private String scheduleTopic;
 	
 	@Value("${order.topic.name}")
 	  private String topicName;
@@ -32,8 +39,10 @@ public class AllocationService {
 	 
 	 @KafkaListener(topics = "order-topic", groupId = "allocation")
 	 public void listenGroupAllocation(String message) {
+		 
 		    System.out.println("Received Message in group allocation: " + message);
 		   
+		    String allocationMessage=null;
 		    
 		    try {
 		      Order order = object.readValue(message, Order.class);
@@ -43,17 +52,20 @@ public class AllocationService {
 			      order.setStatus("ALLOCATION COMPLETED");
 			      orderRepo.save(order);
 			      stockRepo.save(stock);
+			      
+			      allocationMessage = object.writeValueAsString(order);
 			    
 			    } else {
 			      order.setStatus("ALLOCATION FAILED");
 			      orderRepo.save(order);
 			     
-			    }
-			    
+			    }    
 			   
 		    } catch (JsonProcessingException e) {
 		      e.printStackTrace();
 		    }
+		    
+		    kafkaTemplate.send(scheduleTopic,message);
 		    
 
 		  }

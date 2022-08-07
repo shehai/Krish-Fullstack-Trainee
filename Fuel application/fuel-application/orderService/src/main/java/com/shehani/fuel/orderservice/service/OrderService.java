@@ -25,8 +25,6 @@ public class OrderService {
 	
 	public Order submitOrder(Order order) {
 		
-		
-		
 		order.setStatus("ORDER CREATED");
 		order = orderRepository.save(order);
 		

@@ -1,4 +1,4 @@
-package com.shehani.fuel.allocationservice.model;
+package com.shehani.schedularservice.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -63,7 +63,6 @@ public class Order implements Serializable {
 	public void setScheduleDate(LocalDate scheduleDate) {
 		this.scheduleDate = scheduleDate;
 	}
-	
 	
 	
 }

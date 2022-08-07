@@ -6,4 +6,4 @@ spring:
       host: localhost
       port: 27017
       database: fuelAppDb
-kafka:    producer:      bootstrap-servers: localhost:9092         key-serializer: org.apache.kafka.common.serialization.StringSerializer      value-serializer: org.apache.kafka.common.serialization.StringSerializer       order: topic:   name: order-topic   auto:  create:    topics:      enable: true        
+kafka:    producer:      bootstrap-servers: localhost:9092         key-serializer: org.apache.kafka.common.serialization.StringSerializer      value-serializer: org.apache.kafka.common.serialization.StringSerializer       order: topic:   name: order-topic     schedule:  topic:    name: schedule-topic   auto:  create:    topics:      enable: true              

@@ -1,6 +1,8 @@
 package com.shehani.fuel.orderservice.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,6 +16,8 @@ public class Order implements Serializable {
 	private String fuelId;
 	private int capacity;
 	private String status;
+	private LocalDate scheduleDate;
+	
 	
 	
 	public String getStatus() {
@@ -53,6 +57,12 @@ public class Order implements Serializable {
 	}
 	public void setFuelStationId(String fuelStationId) {
 		this.fuelStationId = fuelStationId;
+	}
+	public LocalDate getScheduleDate() {
+		return scheduleDate;
+	}
+	public void setScheduleDate(LocalDate scheduleDate) {
+		this.scheduleDate = scheduleDate;
 	}
 	
 	

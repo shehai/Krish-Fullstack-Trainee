@@ -27,7 +27,7 @@ public class OrderService {
 		
 		
 		
-		order.setStatus("CREATED");
+		order.setStatus("ORDER CREATED");
 		order = orderRepository.save(order);
 		
 		String message= null;

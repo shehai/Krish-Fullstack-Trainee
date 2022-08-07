@@ -11,7 +11,7 @@ public class Order implements Serializable {
 	private String orderId;
 	private String fuelStationId;
 	private String fuelStationName;
-	private String fuelType;
+	private String fuelId;
 	private int capacity;
 	private String status;
 	
@@ -22,14 +22,7 @@ public class Order implements Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Order(String orderId, String fuelStationId, String fuelStationName, String fuelType, int capacity) {
-		
-		this.orderId = orderId;
-		this.fuelStationId = fuelStationId;
-		this.fuelStationName = fuelStationName;
-		this.fuelType = fuelType;
-		this.capacity = capacity;
-	}
+	
 	public String getOrderId() {
 		return orderId;
 	}
@@ -42,11 +35,12 @@ public class Order implements Serializable {
 	public void setFuelStationName(String fuelStationName) {
 		this.fuelStationName = fuelStationName;
 	}
-	public String getFuelType() {
-		return fuelType;
+	
+	public String getFuelId() {
+		return fuelId;
 	}
-	public void setFuelType(String fuelType) {
-		this.fuelType = fuelType;
+	public void setFuelId(String fuelId) {
+		this.fuelId = fuelId;
 	}
 	public int getCapacity() {
 		return capacity;

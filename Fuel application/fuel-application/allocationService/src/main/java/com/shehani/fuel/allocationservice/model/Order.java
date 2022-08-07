@@ -1,17 +1,40 @@
 package com.shehani.fuel.allocationservice.model;
 
-public class Order {
-	//private String orderId;
+import java.io.Serializable;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="Order")
+public class Order implements Serializable {
+	@Id
+	private String orderId;
 	private String fuelStationId;
 	private String fuelStationName;
-	private String fuelType;
+	private String fuelId;
 	private int capacity;
-	/*public String getOrderId() {
+	private String status;
+	
+	
+	public String getOrderId() {
 		return orderId;
 	}
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
-	}*/
+	}
+	public String getFuelId() {
+		return fuelId;
+	}
+	public void setFuelId(String fuelId) {
+		this.fuelId = fuelId;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 	public String getFuelStationId() {
 		return fuelStationId;
 	}
@@ -24,12 +47,7 @@ public class Order {
 	public void setFuelStationName(String fuelStationName) {
 		this.fuelStationName = fuelStationName;
 	}
-	public String getFuelType() {
-		return fuelType;
-	}
-	public void setFuelType(String fuelType) {
-		this.fuelType = fuelType;
-	}
+	
 	public int getCapacity() {
 		return capacity;
 	}

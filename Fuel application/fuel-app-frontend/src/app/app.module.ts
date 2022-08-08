@@ -24,6 +24,7 @@ import { CheckOrderStatusComponent } from './check-order-status/check-order-stat
     RouterModule.forRoot([
       {path:'order', component:OrderComponent},
       //{path:'employees/:id', component:EmployeesComponent, canActivate:[CreateEmployeeGuard]},
+      {path:'order-status', component:CheckOrderStatusComponent},
       {path:'home', component:HomeComponent},
       {path:'', redirectTo:'home', pathMatch:'full'},
 

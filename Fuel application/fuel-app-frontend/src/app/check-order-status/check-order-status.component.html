@@ -1,1 +1,65 @@
-<p>check-order-status works!</p>
+<div class="card">
+  <div class="card-header">
+    <br/>
+  <div class="card-body">
+    <div class="row">
+    </div>
+      </div>
+
+      <form class="row g-3" #searchForm="ngForm" (ngSubmit)="searchOrder()" >
+        <div class="col-auto">
+          <label for="orderId" class="form-label">Search By Order Id</label>
+        </div>
+
+        <div class="col-auto">
+          <input type="text" class="form-control" [(ngModel)]="order.orderId" [ngModelOptions]="{standalone: true}">
+
+        </div>
+
+
+
+
+          <div class="col-auto">
+
+            <button type="submit" class="btn btn-danger mb-3"  [disabled]="!searchForm.valid">Search</button>
+
+              </div>
+
+        </form>
+
+
+    <div class="table-reponsive">
+        <table class="table" *ngIf="showTable">
+
+          <thead>
+            <tr>
+
+              <th>Order Id </th>
+              <th>Fuel Station Id</th>
+              <th>FuelStation Name</th>
+              <th>Fuel Type</th>
+              <th>Requested Fuel Capacity</th>
+              <th>Order Status</th>
+            </tr>
+          </thead>
+
+        <tbody>
+            <tr>
+              <td>{{orders.orderId}}</td>
+              <td>{{orders.fuelStationId}}</td>
+              <td>{{orders.fuelStationName}}</td>
+              <td>{{orders.fuelType}}</td>
+              <td>{{orders.capacity}}</td>
+              <td>{{orders.status}}</td>
+
+            </tr>
+          </tbody>
+
+        </table>
+
+
+    </div>
+  </div>
+
+</div>
+

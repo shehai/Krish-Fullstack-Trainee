@@ -5,9 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -28,6 +32,15 @@ public class OrderController {
 		 return orderService.submitOrder(order);
 		 
 		
+		
+	}
+	
+	@GetMapping("/id/{id}")
+	@ResponseBody
+	public Order findOrderById(@PathVariable String id) {
+		
+		
+		return orderService.findOrderById(id);	
 		
 	}
 	

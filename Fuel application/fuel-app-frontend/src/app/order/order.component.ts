@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from './order.model';
-import { OrderService } from './order.service';
+import { Order } from '../shared/models/order.model';
+import { OrderService } from '../shared/services/order.service';
 import {NgForm} from '@angular/forms';
-import { Stock } from './stock.model';
-import { StockService } from './stock.service';
+import { Stock } from '../shared/models/stock.model';
+import { StockService } from '../shared/services/stock.service';
 
 @Component({
   selector: 'app-order',

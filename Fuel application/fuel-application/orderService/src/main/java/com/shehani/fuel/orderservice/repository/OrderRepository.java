@@ -8,6 +8,7 @@ import com.shehani.fuel.orderservice.model.Order;
 @Repository
 public interface OrderRepository extends MongoRepository<Order,String> {
 	
-	Order findByFuelStationId(String id);
+	Order findByOrderId(String id);
+	
 
 }

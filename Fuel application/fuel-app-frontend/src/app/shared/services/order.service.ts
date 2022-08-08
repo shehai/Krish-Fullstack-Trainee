@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
-import { Order } from './order.model';
+import { Order } from '../models/order.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,4 +20,11 @@ export class OrderService {
          //console.log(order);
 
     }
+
+    getOrderById(id:string): Observable<Order>{
+
+      return this.http.get<Order>(`${this.orderUrl}id/${id}`);
+    }
+
+
 }

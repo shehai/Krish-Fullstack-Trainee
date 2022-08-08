@@ -39,5 +39,14 @@ public class OrderService {
 		//return orderRepository.findByFuelStationId(order.getFuelStationId());	
 		return order;
 	}
+	
+	public Order findOrderById(String id) {
+		
+		return orderRepository.findByOrderId(id);
+			
+		
+	}
+	
+	
 
 }

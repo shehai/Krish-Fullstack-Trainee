@@ -5,5 +5,4 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: fuelAppDb
-kafka:    producer:      bootstrap-servers: localhost:9092         key-serializer: org.apache.kafka.common.serialization.StringSerializer      value-serializer: org.apache.kafka.common.serialization.StringSerializer       order: topic:   name: order-topic     schedule:  topic:    name: schedule-topic   auto:  create:    topics:      enable: true              
+      database: fuelAppDb              kafka:    producer:      bootstrap-servers: localhost:9092         key-serializer: org.apache.kafka.common.serialization.StringSerializer      value-serializer: org.apache.kafka.common.serialization.StringSerializer          consumer:      group-id: allocation      bootstrap-servers: localhost:9092      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer                  order: topic:   name: order-topic     schedule:  topic:    name: schedule-topic   auto:  create:    topics:      enable: true              

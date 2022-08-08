@@ -23,30 +23,22 @@ public class SchedularService {
 	@Autowired
 	OrderRepository orderRepo;
 	
-	ObjectMapper object = new ObjectMapper();
+	ObjectMapper objMapper = new ObjectMapper();
 	
 	 @KafkaListener(topics = "schedule-topic", groupId = "schedular")
 	 public void listenGroupSchedular(String message) {
 		 
-		    System.out.println("Received Message in group Schedular: " + message);
-		   
-		    //String schedularMessage=null;
+		    System.out.println("Received Message to Schedular group: " + message);
 		    
 		    try {
 		    	
-		    	Order order = object.readValue(message,Order.class);
-		    	
-		      //Order order = object.readValue(message, Order.class);
-		      
+		    	Order order = objMapper.readValue(message,Order.class);
 			      order.setStatus("SCHEDULING COMPLETED");
+			      
 			      Random randomDays = ThreadLocalRandom.current();
 			      LocalDate date = LocalDate.now().plusDays(randomDays.nextInt(7) + 1);
 			      order.setScheduleDate(date);
 			      orderRepo.save(order);
-			      
-			      
-			      //allocationMessage = object.writeValueAsString(order);
-			      
 			     
 			   
 		    } catch (JsonProcessingException e) {

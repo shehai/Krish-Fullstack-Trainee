@@ -19,9 +19,9 @@ public class OrderService {
 	KafkaTemplate<String,String> kafkaTemplate;
 	
 	@Value("${order.topic.name}")
-	private String topicName;
+	private String orderTopic;
 	
-	ObjectMapper om=new ObjectMapper();
+	ObjectMapper objMapper=new ObjectMapper();
 	
 	public Order submitOrder(Order order) {
 		
@@ -30,16 +30,13 @@ public class OrderService {
 		
 		String message= null;
 	    try {
-	      message = om.writeValueAsString(order);
+	      message = objMapper.writeValueAsString(order);
 	    } catch (JsonProcessingException e) {
 	      e.printStackTrace();
 	    }
-	    kafkaTemplate.send(topicName,message);
+	    kafkaTemplate.send(orderTopic,message);
 		
-		//return orderRepository.findByFuelStationId(order.getFuelStationId());
-		
-		
-		
+		//return orderRepository.findByFuelStationId(order.getFuelStationId());	
 		return order;
 	}
 

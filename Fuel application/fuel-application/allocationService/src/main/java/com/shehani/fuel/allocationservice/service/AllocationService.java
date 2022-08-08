@@ -24,7 +24,7 @@ public class AllocationService {
 	private String scheduleTopic;
 	
 	@Value("${order.topic.name}")
-	  private String topicName;
+	  private String orderTopic;
 	
 	@Autowired
 	OrderRepository orderRepo;
@@ -35,17 +35,17 @@ public class AllocationService {
 	@Autowired
 	StockRepository stockRepo;
 	
-	 ObjectMapper object = new ObjectMapper();
+	 ObjectMapper objMapper = new ObjectMapper();
 	 
 	 @KafkaListener(topics = "order-topic", groupId = "allocation")
 	 public void listenGroupAllocation(String message) {
 		 
-		    System.out.println("Received Message in group allocation: " + message);
+		    System.out.println("Received Message to Allocation group: " + message);
 		   
 		    String allocationMessage=null;
 		    
 		    try {
-		      Order order = object.readValue(message, Order.class);
+		      Order order = objMapper.readValue(message, Order.class);
 		      Stock stock = stockRepo.findById(order.getFuelId()).get();
 			    if (stock.getCapacity() > order.getCapacity()) {
 			      stock.setCapacity(stock.getCapacity() - order.getCapacity());
@@ -53,7 +53,7 @@ public class AllocationService {
 			      orderRepo.save(order);
 			      stockRepo.save(stock);
 			      
-			      allocationMessage = object.writeValueAsString(order);
+			      allocationMessage = objMapper.writeValueAsString(order);
 			    
 			    } else {
 			      order.setStatus("ALLOCATION FAILED");

@@ -8,13 +8,19 @@ spring:
       port: 27017
       database: fuelAppDb
 
-kafka:
+  kafka:
     producer:
       bootstrap-servers: localhost:9092   
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer 
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
       
-     
+    consumer:
+      group-id: schedular
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+       
+          
 schedule:
   topic:
     name: schedule-topic

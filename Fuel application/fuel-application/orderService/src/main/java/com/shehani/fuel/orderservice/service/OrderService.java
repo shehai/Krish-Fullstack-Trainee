@@ -1,5 +1,7 @@
 package com.shehani.fuel.orderservice.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -42,9 +44,13 @@ public class OrderService {
 	
 	public Order findOrderById(String id) {
 		
-		return orderRepository.findByOrderId(id);
-			
+		return orderRepository.findByOrderId(id);		
 		
+	}
+	
+	public List<Order> getAllOrders(){
+		
+		return orderRepository.findAll();
 	}
 	
 	

@@ -8,13 +8,15 @@ import { OrderComponent } from './order/order.component';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CheckOrderStatusComponent } from './check-order-status/check-order-status.component';
+import { ViewAllOrderComponent } from './view-all-order/view-all-order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     OrderComponent,
-    CheckOrderStatusComponent
+    CheckOrderStatusComponent,
+    ViewAllOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { CheckOrderStatusComponent } from './check-order-status/check-order-stat
       {path:'order', component:OrderComponent},
       //{path:'employees/:id', component:EmployeesComponent, canActivate:[CreateEmployeeGuard]},
       {path:'order-status', component:CheckOrderStatusComponent},
+      {path:'all-orders', component:ViewAllOrderComponent},
       {path:'home', component:HomeComponent},
       {path:'', redirectTo:'home', pathMatch:'full'},
 

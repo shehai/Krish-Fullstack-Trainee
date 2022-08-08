@@ -1,5 +1,7 @@
 package com.shehani.fuel.orderservice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -30,8 +32,13 @@ public class OrderController {
 	public Order saveOrder(@RequestBody Order order) {
 		
 		 return orderService.submitOrder(order);
-		 
+		 	
+	}
+	
+	@GetMapping("/")
+	public List<Order> getAllOrders(){
 		
+		return orderService.getAllOrders();
 		
 	}
 	

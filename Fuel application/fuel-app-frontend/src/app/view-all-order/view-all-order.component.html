@@ -1,0 +1,60 @@
+<div class="card">
+  <div class="card-header">
+    <br/>
+  <div class="card-body">
+    <div class="row">
+    </div>
+      </div>
+
+      <div class="row g-3"  >
+        <div class="col-auto">
+          <label for="fuelStationName" class="form-label">Search By Fuel Station </label>
+        </div>
+
+        <div class="col-auto">
+          <input type="text" class="form-control" [(ngModel)]="fuelStationNameFilter">
+
+        </div>
+
+            </div>
+
+
+    <div class="table-reponsive">
+        <table class="table" *ngIf="orders.length">
+
+          <thead>
+            <tr>
+
+              <th>Order Id </th>
+              <th>Fuel Station Id</th>
+              <th>FuelStation Name</th>
+              <th>Fuel Type</th>
+              <th>Requested Fuel Capacity</th>
+              <th>Order Scheduled Date</th>
+              <th>Order Status</th>
+
+            </tr>
+          </thead>
+
+        <tbody>
+            <tr *ngFor="let orders of filteredOrders">
+              <td>{{orders.orderId}}</td>
+              <td>{{orders.fuelStationId}}</td>
+              <td>{{orders.fuelStationName}}</td>
+              <td>{{orders.fuelType}}</td>
+              <td>{{orders.capacity}}</td>
+              <td>{{orders.scheduleDate}}</td>
+              <td>{{orders.status}}</td>
+
+            </tr>
+          </tbody>
+
+        </table>
+
+
+    </div>
+  </div>
+
+</div>
+
+

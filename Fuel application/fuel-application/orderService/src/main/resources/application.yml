@@ -22,9 +22,21 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer 
       
+    consumer:
+      group-id: dispatch
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      
 order:
  topic:
    name: order-topic
+   
+dispatch:
+ topic:
+   name: dispatch-topic
+   
+
    
 auto:
   create:

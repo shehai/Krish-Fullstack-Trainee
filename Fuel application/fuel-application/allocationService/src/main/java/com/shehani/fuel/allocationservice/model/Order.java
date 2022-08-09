@@ -2,6 +2,7 @@ package com.shehani.fuel.allocationservice.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -14,9 +15,11 @@ public class Order implements Serializable {
 	private String fuelStationId;
 	private String fuelStationName;
 	private String fuelId;
+	private String fuelType;
 	private int capacity;
 	private String status;
 	private LocalDate scheduleDate;
+	private LocalDate dispatchDate;
 	
 	
 	public String getOrderId() {
@@ -62,6 +65,19 @@ public class Order implements Serializable {
 	}
 	public void setScheduleDate(LocalDate scheduleDate) {
 		this.scheduleDate = scheduleDate;
+	}
+	
+	public LocalDate getDispatchDate() {
+		return dispatchDate;
+	}
+	public void setDispatchDate(LocalDate dispatchDate) {
+		this.dispatchDate = dispatchDate;
+	}
+	public String getFuelType() {
+		return fuelType;
+	}
+	public void setFuelType(String fuelType) {
+		this.fuelType = fuelType;
 	}
 	
 	

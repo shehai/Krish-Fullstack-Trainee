@@ -1,5 +1,4 @@
 
-
 <div class="card">
 
   <div class="card-header">
@@ -7,36 +6,27 @@
   <div class="card-body">
     <div class="row">
       <div *ngIf="alert" class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Sucessful!</strong>Your Order is completed
+        <strong>Sucessful!</strong>order Id {{orderId}} is dispatched
         <button (click)="closeAlert()"type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>
       </div>
 
-      <form class="row g-3" #searchForm="ngForm" (ngSubmit)="searchOrder()" >
+      <div class="row g-3"  >
         <div class="col-auto">
-          <label for="orderId" class="form-label">Search By Order Id</label>
+          <label for="fuelStationName" class="form-label">Search By Fuel Station </label>
         </div>
 
         <div class="col-auto">
-          <input type="text" class="form-control" [(ngModel)]="order.orderId" [ngModelOptions]="{standalone: true}">
+          <input type="text" class="form-control" [(ngModel)]="fuelStationNameFilter">
 
         </div>
 
-
-
-
-          <div class="col-auto">
-
-            <button type="submit" class="btn btn-danger mb-3"  [disabled]="!searchForm.valid">Search</button>
-
-              </div>
-
-        </form>
+            </div>
 
 
     <div class="table-reponsive">
-        <table class="table" *ngIf="showTable">
+        <table class="table" *ngIf="orders.length">
 
           <thead>
             <tr>
@@ -46,20 +36,23 @@
               <th>FuelStation Name</th>
               <th>Fuel Type</th>
               <th>Requested Fuel Capacity</th>
+              <th>Order Scheduled Date</th>
               <th>Order Status</th>
-              <th>Order Confirm</th>
+              <th>Dispatch</th>
+
             </tr>
           </thead>
 
         <tbody>
-            <tr>
+            <tr *ngFor="let orders of filteredOrders; let i = index">
               <td>{{orders.orderId}}</td>
               <td>{{orders.fuelStationId}}</td>
               <td>{{orders.fuelStationName}}</td>
               <td>{{orders.fuelType}}</td>
               <td>{{orders.capacity}}</td>
+              <td>{{orders.scheduleDate}}</td>
               <td>{{orders.status}}</td>
-              <td><button class="btn btn-danger" (click)="confirmOrder(orders.orderId)">Confirm Order</button></td>
+              <td><button class="btn btn-danger" (click)="dispatchOrder(orders.orderId)">dispatch</button></td>
 
             </tr>
           </tbody>
@@ -71,4 +64,3 @@
   </div>
 
 </div>
-

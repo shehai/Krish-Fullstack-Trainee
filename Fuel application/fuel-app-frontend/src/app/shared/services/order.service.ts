@@ -32,4 +32,18 @@ export class OrderService {
     }
 
 
+    getScheduledOrders(): Observable<Order[]>{
+
+      return this.http.get<Order[]>(`${this.orderUrl}schedule/`)
+    }
+
+
+
+
+    orderConfirm(id:string): Observable<Order>{
+
+      return this.http.get<Order>(`${this.orderUrl}confirm/${id}`);
+    }
+
+
 }

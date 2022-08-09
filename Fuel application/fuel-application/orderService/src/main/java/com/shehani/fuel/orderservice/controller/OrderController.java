@@ -51,5 +51,20 @@ public class OrderController {
 		
 	}
 	
+	
+	@GetMapping("/schedule/")
+	public List<Order> getScheduledOrdes() {
+			
+		return orderService.getScheduledOrders();	
+		
+	}
 
+	@GetMapping("/confirm/{id}")
+	@ResponseBody
+	public Order confirmOrder(@PathVariable String id) {
+		
+		
+		return orderService.orderConfirm(id);	
+		
+	}
 }

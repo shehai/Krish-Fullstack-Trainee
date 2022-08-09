@@ -3,7 +3,9 @@ export interface Order {
   fuelStationId: string
   fuelStationName: string
   fuelId: string
+  fuelType:string;
   capacity: number
-  status:string;
-  scheduleDate:any;
+  status:string
+  scheduleDate:any
+  dispatchDate:any
 }

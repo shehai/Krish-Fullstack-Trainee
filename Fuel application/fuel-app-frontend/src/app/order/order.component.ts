@@ -14,9 +14,11 @@ export class OrderComponent implements OnInit {
 
   order ={} as Order ;
   newOrder={} as Order;
-  OrderId : String;
+  OrderId : string;
   stock!:Stock[];
   filteredStock!:Stock[];
+  alert:boolean;
+  id:string;
 
   //order:Order={orderId:""}
   //order:Object ={};
@@ -39,13 +41,27 @@ export class OrderComponent implements OnInit {
 
       this.newOrder = data
       this.OrderId= this.newOrder.orderId;
-      alert('Your Order ID is: '+ this.OrderId);
-      console.log(this.OrderId);
+      this.Success(this.OrderId);
+
+      //alert('Your Order ID is: '+ this.OrderId);
+      //console.log(this.OrderId);
       //this.refreshPeople();
     })
     console.log(this.order);
 
 
+  }
+
+  Success(id:string){
+
+    this.alert=true;
+
+  }
+
+  closeAlert(){
+
+    this.alert=false
+    window.location.reload();
   }
 
 

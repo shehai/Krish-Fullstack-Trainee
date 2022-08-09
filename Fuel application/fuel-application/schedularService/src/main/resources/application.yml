@@ -24,6 +24,7 @@ spring:
 schedule:
   topic:
     name: schedule-topic
+    
    
 auto:
   create:

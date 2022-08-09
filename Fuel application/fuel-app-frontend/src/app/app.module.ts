@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CheckOrderStatusComponent } from './check-order-status/check-order-status.component';
 import { ViewAllOrderComponent } from './view-all-order/view-all-order.component';
+import { DispatchComponent } from './dispatch/dispatch.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ViewAllOrderComponent } from './view-all-order/view-all-order.component
     HomeComponent,
     OrderComponent,
     CheckOrderStatusComponent,
-    ViewAllOrderComponent
+    ViewAllOrderComponent,
+    DispatchComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import { ViewAllOrderComponent } from './view-all-order/view-all-order.component
       //{path:'employees/:id', component:EmployeesComponent, canActivate:[CreateEmployeeGuard]},
       {path:'order-status', component:CheckOrderStatusComponent},
       {path:'all-orders', component:ViewAllOrderComponent},
+      {path:'schedule-orders', component:DispatchComponent},
       {path:'home', component:HomeComponent},
       {path:'', redirectTo:'home', pathMatch:'full'},
 

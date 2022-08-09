@@ -9,8 +9,8 @@ import {OrderService} from '../shared/services/order.service'
 })
 export class ViewAllOrderComponent implements OnInit {
 
-  orders!: Order[];
-  filteredOrders!:Order[];
+  orders: Order[]=[];
+  filteredOrders:Order[]=[];
   private _fuelStationNameFilter:string ='';
 
   set fuelStationNameFilter(value:string){

@@ -11,7 +11,9 @@ export class CheckOrderStatusComponent implements OnInit {
 
   order ={} as Order ;
   orders={} as Order;
+  id:string;
   showTable:boolean=false;
+  alert:boolean=false;
   constructor(private orderService:OrderService) { }
 
   ngOnInit(): void {
@@ -33,6 +35,38 @@ export class CheckOrderStatusComponent implements OnInit {
     );
     console.log(this.orders);
 
+  }
+
+
+  confirmOrder(id:string){
+
+    //this.id =id;
+
+    this.orderService.orderConfirm(id).subscribe(data => {
+
+      this.order = data
+
+      this.Success();
+
+      //console.log(this.order);
+
+    },
+
+    error=>alert('Order is cannot dispatch')
+    );
+   // console.log(id);
+
+  }
+
+  Success(){
+    this.alert=true;
+
+  }
+
+  closeAlert(){
+
+    this.alert=false
+    window.location.reload();
   }
 
 }

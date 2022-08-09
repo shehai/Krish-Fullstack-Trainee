@@ -57,5 +57,6 @@
 		<module>orderService</module>
 		<module>allocationService</module>
 		<module>schedularService</module>
+		<module>dispatchService</module>
 	</modules>
 </project>

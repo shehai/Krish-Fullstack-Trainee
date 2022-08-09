@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -17,8 +18,10 @@ import com.shehani.schedularservice.repository.OrderRepository;
 @Service
 public class SchedularService {
 	
+	
 	@Value("${schedule.topic.name}")
 	private String scheduleTopic;
+	
 	
 	@Autowired
 	OrderRepository orderRepo;
@@ -30,6 +33,8 @@ public class SchedularService {
 		 
 		    System.out.println("Received Message to Schedular group: " + message);
 		    
+		    
+		    
 		    try {
 		    	
 		    	Order order = objMapper.readValue(message,Order.class);
@@ -38,14 +43,12 @@ public class SchedularService {
 			      Random randomDays = ThreadLocalRandom.current();
 			      LocalDate date = LocalDate.now().plusDays(randomDays.nextInt(7) + 1);
 			      order.setScheduleDate(date);
-			      orderRepo.save(order);
-			     
+			      orderRepo.save(order); 
 			   
 		    } catch (JsonProcessingException e) {
 		      e.printStackTrace();
 		    }
 		    
-		    //kafkaTemplate.send(scheduleTopic,message);
 		    
 
 		  }
